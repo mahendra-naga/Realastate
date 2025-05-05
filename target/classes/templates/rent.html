@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent Properties - HomyZ Real Estate</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: relative;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #480a0e;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: #4b5563;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: #480a0e;
+        }
+
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .sign-in {
+            color: #4b5563;
+            transition: color 0.3s;
+        }
+
+        .sign-in:hover {
+            color: #480a0e;
+        }
+
+        .sign-up {
+            background-color: #480a0e;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .sign-up:hover {
+            background-color: #480a0e;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .page-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./images/banner2.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background-color: white;
+            padding: 30px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+
+        .filter-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: flex-end;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #4b5563;
+        }
+
+        .filter-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        .filter-control:focus {
+            border-color:  #10b981;
+            outline: none;
+        }
+
+        .price-range {
+            display: flex;
+            gap: 10px;
+        }
+
+        .price-range input {
+            flex: 1;
+        }
+
+        .filter-btn {
+            background-color: #10b981;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            min-width: 120px;
+        }
+
+        .filter-btn:hover {
+            background-color:  #10b981;
+        }
+
+        .reset-btn {
+            background-color: #f3f4f6;
+            color: #4b5563;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .reset-btn:hover {
+            background-color: #e5e7eb;
+        }
+
+        /* Properties Section */
+        .rental-list-section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: #1f2937;
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            color: #6b7280;
+        }
+
+        .rental-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .rental-tab {
+            padding: 10px 20px;
+            font-weight: 500;
+            color: #6b7280;
+            cursor: pointer;
+            transition: color 0.3s, border-color 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+
+        .rental-tab.active {
+            color: #10b981;
+            border-color:  #10b981;
+        }
+
+        .rental-tab:hover {
+            color: #10b981;
+        }
+
+        .rental-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .rental-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .rental-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .rental-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .rental-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .rental-card:hover .rental-image img {
+            transform: scale(1.05);
+        }
+
+        .rental-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: #10b981;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .rental-favorite {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: white;
+            color: #6b7280;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .rental-favorite:hover, .rental-favorite.active {
+            background-color: #ef4444;
+            color: white;
+        }
+
+        .rental-content {
+            padding: 20px;
+        }
+
+        .rental-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #10b981;
+            margin-bottom: 10px;
+        }
+
+        .rental-period {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        .rental-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #1f2937;
+        }
+
+        .rental-address {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .rental-features {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 15px;
+            border-top: 1px solid #e5e7eb;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .rental-feature {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .rental-link {
+            display: block;
+            margin-top: 15px;
+            text-align: center;
+            background-color: #10b981;
+            color: white;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .rental-link:hover {
+            background-color: #059669;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 5px;
+        }
+
+        .page-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
+            color: #4b5563;
+            background-color: white;
+            border: 1px solid #e5e7eb;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+        .page-link:hover, .page-link.active {
+            background-color: #10b981;
+            color: white;
+            border-color: #10b981;
+        }
+
+        /* Featured Section */
+        .featured-section {
+            padding: 60px 0;
+            background-color: #f8fafc;
+        }
+
+        .featured-rentals {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .featured-tag {
+            background-color: #f59e0b;
+        }
+
+        /* Why Rent Section */
+        .why-rent-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 30px;
+            transition: transform 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            background-color: #d1fae5;
+            color: #10b981;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+
+        .benefit-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1f2937;
+        }
+
+        .benefit-desc {
+            color: #6b7280;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(to right, #10b981, #059669);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-content p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .primary-btn {
+            background-color: white;
+            color: #10b981;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .primary-btn:hover {
+            background-color: #f8fafc;
+        }
+
+        .secondary-btn {
+            background-color: transparent;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 500;
+            border: 1px solid white;
+            transition: background-color 0.3s;
+        }
+
+        .secondary-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1f2937;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3, .footer-col h4 {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-col p {
+            color: #9ca3af;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            padding-top: 20px;
+            border-top: 1px solid #374151;
+            font-size: 0.875rem;
+            color: #9ca3af;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            nav, .auth-buttons {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .filter-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-group, .filter-btn {
+                width: 100%;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .rental-tabs {
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+   <!-- Header/Navigation -->
+   <header>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo">HAPPYHOMZ🏡</div>
+            <nav>
+                <ul>
+					<li><a href="/welcome">Home</a></li>
+					                       <li><a href="/buy">Buy</a></li>
+					                       <li><a href="/rent">Rent</a></li>
+					                       <li><a href="/sale">Sale</a></li>
+					                       <li><a href="/aboutus">About Us</a></li>
+					                       <li><a href="/contactus">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+				
+
+				<button id="logoutButton" class="btn btn-logout sign-up">Logout</button>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </div>
+</header>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Find Your Perfect Rental</h1>
+            <p>Discover a wide range of rental properties that suit your lifestyle and budget</p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <form id="rental-filter-form">
+                <div class="filter-container">
+                    <div class="filter-group">
+                        <label for="location">Location</label>
+                        <select id="location" class="filter-control">
+                            <option value="">All Locations</option>
+                            <option value="downtown">Downtown</option>
+                            <option value="suburbs">Suburbs</option>
+                            <option value="beach">Beachside</option>
+                            <option value="countryside">Countryside</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="property-type">Property Type</label>
+                        <select id="property-type" class="filter-control">
+                            <option value="">All Types</option>
+                            <option value="apartment">Apartment</option>
+                            <option value="house">House</option>
+                            <option value="condo">Condo</option>
+                            <option value="studio">Studio</option>
+                            <option value="townhouse">Townhouse</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="rent-range">Monthly Rent</label>
+                        <select id="rent-range" class="filter-control">
+                            <option value="">Any Price</option>
+                            <option value="0-1000">Under $1,000</option>
+                            <option value="1000-2000">$1,000 - $2,000</option>
+                            <option value="2000-3000">$2,000 - $3,000</option>
+                            <option value="3000-plus">Over $3,000</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="bedrooms">Bedrooms</label>
+                        <select id="bedrooms" class="filter-control">
+                            <option value="">Any</option>
+                            <option value="studio">Studio</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4-plus">4+</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="availability">Availability</label>
+                        <select id="availability" class="filter-control">
+                            <option value="">Any Time</option>
+                            <option value="immediate">Immediate</option>
+                            <option value="within-30">Within 30 days</option>
+                            <option value="next-month">Next Month</option>
+                            <option value="future">Future Date</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="filter-btn">Search</button>
+                    <button type="reset" class="reset-btn">Reset</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Rental Properties Section -->
+    <section class="rental-list-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Available Rentals</h2>
+                <p>Browse our selection of quality rental properties in top locations</p>
+            </div>
+            
+            <div class="rental-tabs">
+                <div class="rental-tab active" data-type="all">All Rentals</div>
+                <div class="rental-tab" data-type="apartment">Apartments</div>
+                <div class="rental-tab" data-type="house">Houses</div>
+                <div class="rental-tab" data-type="studio">Studios</div>
+                <div class="rental-tab" data-type="condo">Condos</div>
+            </div>
+            
+            <div class="rental-list">
+                <!-- Rental Card 1 -->
+                <div class="rental-card" data-type="apartment">
+                    <div class="rental-image">
+                        <img src="./images/rent1.jpg" alt="Modern Apartment">
+                        <div class="rental-tag">For Rent</div>
+                        <div class="rental-favorite">♡</div>
+                    </div>
+                    <div class="rental-content">
+                        <div class="rental-price">$2,400<span class="rental-period">/month</span></div>
+                        <h3 class="rental-title">Modern Downtown Apartment</h3>
+                        <p class="rental-address">123 Urban Street, Downtown</p>
+                        <div class="rental-features">
+                            <span class="rental-feature">2 Beds</span>
+                            <span class="rental-feature">2 Baths</span>
+                            <span class="rental-feature">1,100 sqft</span>
+                        </div>
+                        <a href="/property-detail" class="rental-link">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Rental Card 2 -->
+                <div class="rental-card" data-type="house">
+                    <div class="rental-image">
+                        <img src="./images/rent2.jpg" alt="Family Home">
+                        <div class="rental-tag">For Rent</div>
+                        <div class="rental-favorite">♡</div>
+                    </div>
+                    <div class="rental-content">
+                        <div class="rental-price">$3,500<span class="rental-period">/month</span></div>
+                        <h3 class="rental-title">Spacious Family Home</h3>
+                        <p class="rental-address">456 Oak Avenue, Suburbs</p>
+                        <div class="rental-features">
+                            <span class="rental-feature">4 Beds</span>
+                            <span class="rental-feature">3 Baths</span>
+                            <span class="rental-feature">2,200 sqft</span>
+                        </div>
+                        <a href="/property-detail" class="rental-link">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Rental Card 3 -->
+                <div class="rental-card" data-type="condo">
+                    <div class="rental-image">
+                        <img src="./images/rent3.jpg" alt="Luxury Condo">
+                        <div class="rental-tag">For Rent</div>
+                        <div class="rental-favorite">♡</div>
+                    </div>
+                    <div class="rental-content">
+                        <div class="rental-price">$3,200<span class="rental-period">/month</span></div>
+                        <h3 class="rental-title">Luxury Beachfront Condo</h3>
+                        <p class="rental-address">789 Shoreline Drive, Beachside</p>
+                        <div class="rental-features">
+                            <span class="rental-feature">3 Beds</span>
+                            <span class="rental-feature">2 Baths</span>
+                            <span class="rental-feature">1,800 sqft</span>
+                        </div>
+                        <a href="/property-detail" class="rental-link">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Rental Card 4 -->
+                <div class="rental-card" data-type="studio">
+                    <div class="rental-image">
+                        <img src="./images/rent4.jpg" alt="Studio Apartment">
+                        <div class="rental-tag">For Rent</div>
+                        <div class="rental-favorite">♡</div>
+                    </div>
+                    <div class="rental-content">
+                        <div class="rental-price">$1,200<span class="rental-period">/month</span></div>
+                        <h3 class="rental-title">Cozy Downtown Studio</h3>
+                        <p class="rental-address">101 Metro Place, Downtown</p>
+                        <div class="rental-features">
+                            <span class="rental-feature">Studio</span>
+                            <span class="rental-feature">1 Bath</span>
+                            <span class="rental-feature">550 sqft</span>
+                        </div>
+                        <a href="/property-detail" class="rental-link">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Rental Card 5 -->
+                <div class="rental-card" data-type="apartment">
+                    <div class="rental-image">
+                        <img src="./images/rent5.jpg" alt="Upscale Apartment">
+                        <div class="rental-tag">For Rent</div>
+                        <div class="rental-favorite">♡</div>
+                    </div>
+                    <div class="rental-content">
+                        <div class="rental-price">$2,800<span class="rental-period">/month</span></div>
+                        <h3 class="rental-title">Upscale City View Apartment</h3>
+                        <p class="rental-address">202 Skyline Avenue, Downtown</p>
+                        <div class="rental-features">
+                            <span class="rental-feature">2 Beds</span>
+                            <span class="rental-feature">2 Baths</span>
+                            <span class="rental-feature">1,300 sqft</span>
+                        </div>
+                        <a href="/property-detail" class="rental-link">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Rental Card 6 -->
+                <div class="rental-card" data-type="house">
+                    <div class="rental-image">
+                        <img src="./images/rent6.jpg" alt="Suburban House">
+                        <div class="rental-tag">For Rent</div>
+                        <div class="rental-favorite">♡</div>
+                    </div>
+                    <div class="rental-content">
+                        <div class="rental-price">$2,950<span class="rental-period">/month</span></div>
+                        <h3 class="rental-title">Modern Suburban House</h3>
+                        <p class="rental-address">303 Garden Lane, Suburbs</p>
+                        <div class="rental-features">
+                            <span class="rental-feature">3 Beds</span>
+                            <span class="rental-feature">2.5 Baths</span>
+                            <span class="rental-feature">1,900 sqft</span>
+                        </div>
+                        <a href="/property-detail" class="rental-link">View Details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination">
+                <a href="#" class="page-link active">1</a>
+                <a href="#" class="page-link">2</a>
+                <a href="#" class="page-link">3</a>
+                <a href="#" class="page-link">4</a>
+                <a href="#" class="page-link">5</a>
+                <a href="#" class="page-link">❯</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="featured-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Rental Properties</h2>
+                <p>Our handpicked selection of premium rental properties</p>
+            </div>
+            
+            <div class="featured-rentals">
+                <!-- Featured Rental 1 -->
+                <div class="rental-card">
+                    <div class="rental-image">
+                        <img src="./images/lux-rent1.jpg" alt="Luxury Penthouse">
+                        <div class="rental-tag featured-tag">Featured</div>
+                        <div class="rental-favorite">♡</div>
+                    </div>
+                    <div class="rental-content">
+                        <div class="rental-price">$5,200<span class="rental-period">/month</span></div>
+                        <h3 class="rental-title">Luxury Downtown Penthouse</h3>
+                        <p class="rental-address">1000 Skyview Tower, Downtown</p>
+                        <div class="rental-features">
+                            <span class="rental-feature">3 Beds</span>
+                            <span class="rental-feature">3.5 Baths</span>
+                            <span class="rental-feature">2,400 sqft</span>
+                        </div>
+                        <a href="/property-detail" class="rental-link">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Featured Rental 2 -->
+                <div class="rental-card">
+                    <div class="rental-image">
+                        <img src="./images/lux-rent2.jpg" alt="Waterfront Villa">
+                        <div class="rental-tag featured-tag">Featured</div>
+                        <div class="rental-favorite">♡</div>
+                    </div>
+                    <div class="rental-content">
+                        <div class="rental-price">$7,500<span class="rental-period">/month</span></div>
+                        <h3 class="rental-title">Exclusive Waterfront Villa</h3>
+                        <p class="rental-address">500 Lake Drive, Peninsula</p>
+                        <div class="rental-features">
+                            <span class="rental-feature">5 Beds</span>
+                            <span class="rental-feature">4 Baths</span>
+                            <span class="rental-feature">3,800 sqft</span>
+                        </div>
+                            <a href="/property-detail" class="rental-link">View Details</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Featured Rental 3 -->
+                    <div class="rental-card">
+                        <div class="rental-image">
+                            <img src="./images/lux-rent3.jpg" alt="Modern Townhouse">
+                            <div class="rental-tag featured-tag">Featured</div>
+                            <div class="rental-favorite">♡</div>
+                        </div>
+                        <div class="rental-content">
+                            <div class="rental-price">$3,800<span class="rental-period">/month</span></div>
+                            <h3 class="rental-title">Modern Urban Townhouse</h3>
+                            <p class="rental-address">750 Central Avenue, Downtown</p>
+                            <div class="rental-features">
+                                <span class="rental-feature">3 Beds</span>
+                                <span class="rental-feature">2.5 Baths</span>
+                                <span class="rental-feature">1,950 sqft</span>
+                            </div>
+                            <a href="/property-detail" class="rental-link">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Why Rent Section -->
+        <section class="why-rent-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Why Rent With HomyZ</h2>
+                    <p>We make the rental process simple, secure, and stress-free</p>
+                </div>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">✓</div>
+                        <h3 class="benefit-title">Verified Listings</h3>
+                        <p class="benefit-desc">Every rental property is thoroughly verified for quality and accuracy</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🔍</div>
+                        <h3 class="benefit-title">Advanced Search</h3>
+                        <p class="benefit-desc">Find exactly what you're looking for with our powerful search filters</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">💼</div>
+                        <h3 class="benefit-title">Professional Support</h3>
+                        <p class="benefit-desc">Our rental experts will guide you through the entire process</p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">📝</div>
+                        <h3 class="benefit-title">Easy Applications</h3>
+                        <p class="benefit-desc">Apply for your preferred rental properties online in minutes</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+       
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Need Help Finding the Perfect Rental?</h2>
+                    <p>Our rental specialists can help you find properties that match your exact criteria, even before they're listed.</p>
+                    <div class="cta-buttons">
+                        <a href="/contactus" class="primary-btn">Contact a Rental Specialist</a>
+                        <a href="/rent" class="secondary-btn">Set Up Rental Alerts</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h3>HomyZ</h3>
+                        <p>Your trusted partner in finding the perfect property.</p>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h4>Explore</h4>
+                        <ul class="footer-links">
+							<li><a href="/welcome">Home</a></li>
+							                       <li><a href="/buy">Buy</a></li>
+							                       <li><a href="/rent">Rent</a></li>
+							                       <li><a href="/sale">Sale</a></li>
+							                       <li><a href="/aboutus">About Us</a></li>
+							                       <li><a href="/contactus">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h4>Company</h4>
+                        <ul class="footer-links">
+                            <li><a href="/aboutus">About Us</a></li>
+                            <li><a href="/contactus">Contact</a></li>
+                            <li><a href="careers.html">Careers</a></li>
+                            <li><a href="press.html">Press</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h4>Connect</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Twitter</a></li>
+                            <li><a href="#">Facebook</a></li>
+                            <li><a href="#">Instagram</a></li>
+                            <li><a href="#">LinkedIn</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; 2025 HomyZ Inc. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    
+		<script>
+		          document.addEventListener('DOMContentLoaded', function() {
+		    // Mobile menu toggle
+		    const menuButton = document.querySelector('.mobile-menu-btn');
+		    const nav = document.querySelector('nav');
+		    const authButtons = document.querySelector('.auth-buttons');
+		    
+		    menuButton.addEventListener('click', function() {
+		        nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+		        authButtons.style.display = authButtons.style.display === 'flex' ? 'none' : 'flex';
+		    });
+		    
+		    // Favorite toggle functionality
+		    const favoriteButtons = document.querySelectorAll('.rental-favorite');
+		    
+		    favoriteButtons.forEach(button => {
+		        button.addEventListener('click', function() {
+		            if (this.innerHTML === '♡') {
+		                this.innerHTML = '♥';
+		                this.classList.add('active');
+		            } else {
+		                this.innerHTML = '♡';
+		                this.classList.remove('active');
+		            }
+		        });
+		    });
+		    
+		    // Define property data based on existing cards
+		    const rentalProperties = [
+		        {
+		            id: 1,
+		            title: "Modern Downtown Apartment",
+		            location: "Downtown",
+		            type: "apartment",
+		            price: 2400,
+		            bedrooms: 2,
+		            bathrooms: 2,
+		            sqft: 1100,
+		            availability: "Immediate",
+		            image: "./images/rent1.jpg",
+		            address: "123 Urban Street, Downtown"
+		        },
+		        {
+		            id: 2,
+		            title: "Spacious Family Home",
+		            location: "Suburbs",
+		            type: "house",
+		            price: 3500,
+		            bedrooms: 4,
+		            bathrooms: 3,
+		            sqft: 2200,
+		            availability: "Next Month",
+		            image: "./images/rent2.jpg",
+		            address: "456 Oak Avenue, Suburbs"
+		        },
+		        {
+		            id: 3,
+		            title: "Luxury Beachfront Condo",
+		            location: "Beachside",
+		            type: "condo",
+		            price: 3200,
+		            bedrooms: 3,
+		            bathrooms: 2,
+		            sqft: 1800,
+		            availability: "Immediate",
+		            image: "./images/rent3.jpg",
+		            address: "789 Shoreline Drive, Beachside"
+		        },
+		        {
+		            id: 4,
+		            title: "Cozy Downtown Studio",
+		            location: "Downtown",
+		            type: "studio",
+		            price: 1200,
+		            bedrooms: 0,
+		            bathrooms: 1,
+		            sqft: 550,
+		            availability: "Within 30 days",
+		            image: "./images/rent4.jpg",
+		            address: "101 Metro Place, Downtown"
+		        },
+		        {
+		            id: 5,
+		            title: "Upscale City View Apartment",
+		            location: "Downtown",
+		            type: "apartment",
+		            price: 2800,
+		            bedrooms: 2,
+		            bathrooms: 2,
+		            sqft: 1300,
+		            availability: "Next Month",
+		            image: "./images/rent5.jpg",
+		            address: "202 Skyline Avenue, Downtown"
+		        },
+		        {
+		            id: 6,
+		            title: "Modern Suburban House",
+		            location: "Suburbs",
+		            type: "house",
+		            price: 2950,
+		            bedrooms: 3,
+		            bathrooms: 2.5,
+		            sqft: 1900,
+		            availability: "Immediate",
+		            image: "./images/rent6.jpg",
+		            address: "303 Garden Lane, Suburbs"
+		        }
+		    ];
+		    
+		    // Function to create rental card HTML
+		    function createRentalCardHTML(property) {
+		        return `
+		            <div class="rental-card" data-type="${property.type}">
+		                <div class="rental-image">
+		                    <img src="${property.image}" alt="${property.title}">
+		                    <div class="rental-tag">For Rent</div>
+		                    <div class="rental-favorite">♡</div>
+		                </div>
+		                <div class="rental-content">
+		                    <div class="rental-price">$${property.price.toLocaleString()}<span class="rental-period">/month</span></div>
+		                    <h3 class="rental-title">${property.title}</h3>
+		                    <p class="rental-address">${property.address}</p>
+		                    <div class="rental-features">
+		                        <span class="rental-feature">
+		                            ${property.bedrooms > 0 ? property.bedrooms + ' Beds' : 'Studio'}
+		                        </span>
+		                        <span class="rental-feature">${property.bathrooms} Baths</span>
+		                        <span class="rental-feature">${property.sqft.toLocaleString()} sqft</span>
+		                    </div>
+		                    <a href="rental-detail.html?id=${property.id}" class="rental-link">View Details</a>
+		                </div>
+		            </div>
+		        `;
+		    }
+		    
+		    // Filter form functionality
+		    const filterForm = document.getElementById('rental-filter-form');
+		    const rentalList = document.querySelector('.rental-list');
+		    
+		    function filterProperties() {
+		        // Get filter values
+		        const location = document.getElementById('location').value;
+		        const propertyType = document.getElementById('property-type').value;
+		        const rentRange = document.getElementById('rent-range').value;
+		        const bedrooms = document.getElementById('bedrooms').value;
+		        const availability = document.getElementById('availability').value;
+		        
+		        // Clear current listings
+		        rentalList.innerHTML = '';
+		        
+		        // Filter properties
+		        const filteredProperties = rentalProperties.filter(property => {
+		            // Filter by location
+		            if (location && location !== '' && 
+		                property.location.toLowerCase() !== location.toLowerCase()) {
+		                return false;
+		            }
+		            
+		            // Filter by property type
+		            if (propertyType && propertyType !== '' && 
+		                property.type.toLowerCase() !== propertyType.toLowerCase()) {
+		                return false;
+		            }
+		            
+		            // Filter by rent range
+		            if (rentRange && rentRange !== '') {
+		                if (rentRange === '0-1000' && property.price > 1000) return false;
+		                if (rentRange === '1000-2000' && (property.price < 1000 || property.price > 2000)) return false;
+		                if (rentRange === '2000-3000' && (property.price < 2000 || property.price > 3000)) return false;
+		                if (rentRange === '3000-plus' && property.price < 3000) return false;
+		            }
+		            
+		            // Filter by bedrooms
+		            if (bedrooms && bedrooms !== '') {
+		                if (bedrooms === 'studio' && property.bedrooms !== 0) return false;
+		                if (bedrooms === '1' && property.bedrooms !== 1) return false;
+		                if (bedrooms === '2' && property.bedrooms !== 2) return false;
+		                if (bedrooms === '3' && property.bedrooms !== 3) return false;
+		                if (bedrooms === '4-plus' && property.bedrooms < 4) return false;
+		            }
+		            
+		            // Filter by availability
+		            if (availability && availability !== '') {
+		                const availLower = property.availability.toLowerCase();
+		                if (availability === 'immediate' && availLower !== 'immediate') return false;
+		                if (availability === 'within-30' && availLower !== 'within 30 days') return false;
+		                if (availability === 'next-month' && availLower !== 'next month') return false;
+		                if (availability === 'future' && 
+		                   (availLower === 'immediate' || availLower === 'within 30 days' || availLower === 'next month')) 
+		                   return false;
+		            }
+		            
+		            return true;
+		        });
+		        
+		        // Show filtered properties or no results message
+		        if (filteredProperties.length === 0) {
+		            rentalList.innerHTML = `
+		                <div class="no-results" style="grid-column: 1/-1; text-align: center; padding: 40px;">
+		                    <h3 style="font-size: 1.2rem; color: #4b5563; margin-bottom: 10px;">No properties match your search criteria</h3>
+		                    <p style="color: #6b7280;">Try adjusting your filters to see more results.</p>
+		                </div>
+		            `;
+		        } else {
+		            // Add each property to the list
+		            filteredProperties.forEach(property => {
+		                rentalList.innerHTML += createRentalCardHTML(property);
+		            });
+		            
+		            // Re-attach favorite button functionality to new cards
+		            attachFavoriteListeners();
+		        }
+		    }
+		    
+		    filterForm.addEventListener('submit', function(e) {
+		        e.preventDefault();
+		        filterProperties();
+		    });
+		    
+		    filterForm.addEventListener('reset', function() {
+		        setTimeout(() => {
+		            displayRentalsByType('all');
+		        }, 10);
+		    });
+		    
+		    // Rental type tabs functionality
+		    const rentalTabs = document.querySelectorAll('.rental-tab');
+		    
+		    function displayRentalsByType(filterType) {
+		        // Clear current listings
+		        rentalList.innerHTML = '';
+		        
+		        // Get properties based on type
+		        let filteredRentals = rentalProperties;
+		        
+		        if (filterType !== 'all') {
+		            filteredRentals = rentalProperties.filter(property => 
+		                property.type.toLowerCase() === filterType.toLowerCase()
+		            );
+		        }
+		        
+		        // Display properties or no results message
+		        if (filteredRentals.length === 0) {
+		            rentalList.innerHTML = `
+		                <div class="no-results" style="grid-column: 1/-1; text-align: center; padding: 40px;">
+		                    <h3 style="font-size: 1.2rem; color: #4b5563; margin-bottom: 10px;">No properties available in this category</h3>
+		                    <p style="color: #6b7280;">Please check back later or try another category.</p>
+		                </div>
+		            `;
+		        } else {
+		            // Add each property to the list
+		            filteredRentals.forEach(property => {
+		                rentalList.innerHTML += createRentalCardHTML(property);
+		            });
+		            
+		            // Re-attach favorite button functionality to new cards
+		            attachFavoriteListeners();
+		        }
+		    }
+		    
+		    rentalTabs.forEach(tab => {
+		        tab.addEventListener('click', function() {
+		            // Update active tab styling
+		            rentalTabs.forEach(t => t.classList.remove('active'));
+		            this.classList.add('active');
+		            
+		            // Filter properties by type
+		            const filterType = this.getAttribute('data-type');
+		            displayRentalsByType(filterType);
+		        });
+		    });
+		    
+		    // Function to attach favorite button listeners to cards
+		    function attachFavoriteListeners() {
+		        document.querySelectorAll('.rental-favorite').forEach(button => {
+		            button.addEventListener('click', function() {
+		                if (this.innerHTML === '♡') {
+		                    this.innerHTML = '♥';
+		                    this.classList.add('active');
+		                } else {
+		                    this.innerHTML = '♡';
+		                    this.classList.remove('active');
+		                }
+		            });
+		        });
+		    }
+		    
+		    // Pagination functionality
+		    const pageLinks = document.querySelectorAll('.page-link');
+		    
+		    pageLinks.forEach(link => {
+		        link.addEventListener('click', function(e) {
+		            e.preventDefault();
+		            
+		            // Update active page styling
+		            pageLinks.forEach(l => l.classList.remove('active'));
+		            this.classList.add('active');
+		            
+		            // Scroll to top of results
+		            window.scrollTo({ top: 0, behavior: 'smooth' });
+		        });
+		    });
+		    
+		    // Initialize the page with all rentals
+		    attachFavoriteListeners();
+		});
+		        </script>    </body>
+    </html>

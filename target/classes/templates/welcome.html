@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happyhome - Find Your Dream Home</title>
+ <link rel="stylesheet" href="/css/welcome.css">   
+  
+ 
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"> 
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">HAPPYHOMZ🏡</div>
+                <nav>
+                    <ul>
+                        <li><a href="/welcome">Home</a></li>
+                        <li><a href="/buy">Buy</a></li>
+                        <li><a href="/rent">Rent</a></li>
+                        <li><a href="/sale">Sale</a></li>
+                        <li><a href="/aboutus">About Us</a></li>
+                        <li><a href="/contactus">Contact Us</a></li>
+                    </ul>
+                </nav>
+                 <div class="auth-buttons">
+						
+					<button id="logoutButton" class="btn btn-logout sign-up">Logout</button>
+
+	                </div>
+                <button class="mobile-menu-btn">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Find Your Dream Home</h1>
+            <p>Discover the perfect property that fits your lifestyle and budget</p>
+			<div class="search-box">
+			              <div class="search-tabs">
+			                  <button class="search-tab active" data-tab="buy"> Buy</button>
+			                  <button class="search-tab" data-tab="rent">Rent</button>
+			                  <button class="search-tab" data-tab="sale">Sale</button>
+			              </div>
+                
+                <div class="search-input-group">
+                    <div class="search-icon">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <input type="text" class="search-input" placeholder="City, Address, ZIP, or Neighborhood">
+                    <button class="search-btn">Search</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Properties -->
+    <section class="featured">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Properties</h2>
+                <p>Explore our handpicked selection of premium properties available for sale or rent</p>
+            </div>
+            
+            <div class="properties-grid">
+                <div class="property-card">
+                    <img src="./images/image1.jpg" class="property-img">
+                    <div class="property-content">
+                        <h3 class="property-title">Modern Apartment in Downtown</h3>
+                        <p class="property-location">123 Main St, Downtown</p>
+                        <p class="property-price">$450,000</p>
+                        <div class="property-features">
+                            <span>2 Beds</span>
+                            <span>2 Baths</span>
+                            <span>1200 sqft</span>
+                        </div>
+                        <a href="/property-detail" class="property-btn">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="property-card">
+                    <img src="https://thumbs.dreamstime.com/b/beautiful-suburban-home-lush-landscaping-manicured-lawn-sunny-day-large-grey-two-story-single-family-house-three-car-352051046.jpg" alt="Suburban Home" class="property-img">
+                    <div class="property-content">
+                        <h3 class="property-title">Suburban Family Home</h3>
+                        <p class="property-location">456 Oak Ave, Meadowville</p>
+                        <p class="property-price">$750,000</p>
+                        <div class="property-features">
+                            <span>4 Beds</span>
+                            <span>3 Baths</span>
+                            <span>2400 sqft</span>
+                        </div>
+                        <a href="/property-detail" class="property-btn">View Details</a>
+                    </div>
+                </div>
+                
+                <div class="property-card">
+                    <img src="https://media.istockphoto.com/id/528487340/photo/beach-living-on-sea-view.jpg?s=612x612&w=0&k=20&c=-txUQWbvHNG6jOAPQrduesK9foBw8hQid6f3Y2GnwYo=" alt="Luxury Condo" class="property-img">
+                    <div class="property-content">
+                        <h3 class="property-title">Luxury Beach Condo</h3>
+                        <p class="property-location">789 Shore Dr, Beachside</p>
+                        <p class="property-price">$1,200,000</p>
+                        <div class="property-features">
+                            <span>3 Beds</span>
+                            <span>3.5 Baths</span>
+                            <span>2100 sqft</span>
+                        </div>
+                        <a href="/property-detail" class="property-btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="/viewallproperties" class="view-all-btn" width="10%">View All Properties</a>
+        </div>
+    </section>
+
+    <!--Agents Carousel -->
+<section class="agents-carousel-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Meet Our Expert Agents</h2>
+        <p>Our team of dedicated professionals is ready to help you find your perfect property</p>
+      </div>
+      
+      <div class="agents-carousel-container">
+        <div class="agents-carousel">
+          <!-- Agent Card 1 -->
+          <div class="carousel-agent-card">
+            <div class="agent-image">
+              <img src="./images/agent4.jpg" alt="Sarah Johnson">
+              <div class="agent-specialty">Luxury</div>
+            </div>
+            <div class="agent-content">
+              <h3 class="agent-name">Sarah Johnson</h3>
+              <p class="agent-title">Senior Real Estate Consultant</p>
+              <div class="agent-contact">
+                <a href="tel:+15551234567" class="contact-btn">📞</a>
+                <a href="mailto:sarah@homyz.com" class="contact-btn">✉</a>
+              </div>
+              <a href="#" class="agent-link">✰✰✰✰✰</a>
+            </div>
+          </div>
+          
+          <!-- Agent Card 2 -->
+          <div class="carousel-agent-card">
+            <div class="agent-image">
+              <img src="./images/agent6.jpg" alt="Michael Chen">
+              <div class="agent-specialty">Investment</div>
+            </div>
+            <div class="agent-content">
+              <h3 class="agent-name">Michael Chen</h3>
+              <p class="agent-title">Investment Property Specialist</p>
+              <div class="agent-contact">
+                <a href="tel:+15551234568" class="contact-btn">📞</a>
+                <a href="mailto:michael@homyz.com" class="contact-btn">✉</a>
+              </div>
+              <a href="#" class="agent-link">✰✰✰✰✰</a>
+            </div>
+          </div>
+          
+          <!-- Agent Card 3 -->
+          <div class="carousel-agent-card">
+            <div class="agent-image">
+              <img src="./images/agent2.jpg" alt="Emily Rodriguez">
+              <div class="agent-specialty">Residential</div>
+            </div>
+            <div class="agent-content">
+              <h3 class="agent-name">Emily Rodriguez</h3>
+              <p class="agent-title">Residential Specialist</p>
+              <div class="agent-contact">
+                <a href="tel:+15551234569" class="contact-btn">📞</a>
+                <a href="mailto:emily@homyz.com" class="contact-btn">✉</a>
+              </div>
+              <a href="#" class="agent-link">✰✰✰✰✰</a>
+            </div>
+          </div>
+          
+          <!-- Agent Card 4 -->
+          <div class="carousel-agent-card">
+            <div class="agent-image">
+              <img src="./images/agent1.jpg" alt="David Thompson">
+              <div class="agent-specialty">Commercial</div>
+            </div>
+            <div class="agent-content">
+              <h3 class="agent-name">David Thompson</h3>
+              <p class="agent-title">Commercial Real Estate</p>
+              <div class="agent-contact">
+                <a href="tel:+15551234570" class="contact-btn">📞</a>
+                <a href="mailto:david@homyz.com" class="contact-btn">✉</a>
+              </div>
+              <a href="#" class="agent-link">✰✰✰✰✰</a>
+            </div>
+          </div>
+          
+          <!-- Agent Card 5 -->
+          <div class="carousel-agent-card">
+            <div class="agent-image">
+              <img src="./images/agent3.jpg" alt="Jennifer Adams">
+              <div class="agent-specialty">Residential</div>
+            </div>
+            <div class="agent-content">
+              <h3 class="agent-name">Jennifer Adams</h3>
+              <p class="agent-title">Suburban Home Specialist</p>
+              <div class="agent-contact">
+                <a href="tel:+15551234571" class="contact-btn">📞</a>
+                <a href="mailto:jennifer@homyz.com" class="contact-btn">✉</a>
+              </div>
+              <a href="#" class="agent-link">✰✰✰✰</a>
+            </div>
+          </div>
+          
+          <!-- Agent Card 6 -->
+          <div class="carousel-agent-card">
+            <div class="agent-image">
+              <img src="./images/agent5.jpg" alt="Robert Kim">
+              <div class="agent-specialty">Commercial</div>
+            </div>
+            <div class="agent-content">
+              <h3 class="agent-name">Robert Kim</h3>
+              <p class="agent-title">Commercial Leasing Expert</p>
+              <div class="agent-contact">
+                <a href="tel:+15551234572" class="contact-btn">📞</a>
+                <a href="mailto:robert@homyz.com" class="contact-btn">✉</a>
+              </div>
+              <a href="#" class="agent-link">✰✰✰✰</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Carousel Controls -->
+        <div class="carousel-controls">
+          <button class="carousel-prev">❮</button>
+          <button class="carousel-next">❯</button>
+        </div>
+        
+        <!-- Carousel Indicators -->
+        <div class="carousel-indicators">
+          <!-- Indicators will be added via JavaScript -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How HAPPYHOMZ Works</h2>
+                <p>Simple steps to find your perfect home</p>
+            </div>
+            
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Search Properties</h3>
+                    <p class="step-description">Browse our extensive catalog of properties based on your preferences and requirements</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Connect with Agents</h3>
+                    <p class="step-description">Get in touch with our experienced real estate agents who will guide you through the process</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Close the Deal</h3>
+                    <p class="step-description">Finalize your purchase or rental with our streamlined and secure transaction process</p>
+                </div>
+            </div>
+        </div>
+    </section>
+	
+	<!-- ✅ Login Popup Modal (Auto-opens when page loads) -->
+	<!-- Login Modal -->
+	<div id="loginModal" class="modal">
+	    <div class="modal-content">
+	        <h2>Welcome to HappyHomZ</h2>
+	        <p th:if="${error}" class="text-danger" th:text="${error}"></p>
+	        
+	        <form id="loginForm" action="/login" method="post">
+	            <div class="input-group">
+	                <label for="emailOrPhone">Username:</label>
+	                <input type="text" id="emailOrPhone" name="emailOrPhone" required>
+	            </div>
+	            <div class="input-group">
+	                <label for="password">Password:</label>
+	                <input type="password" id="password" name="password" required>
+	            </div>
+	            <button type="submit" class="btn-login">Login</button>
+	        </form>
+
+	        <div class="links">
+	            <a href="/register">Register</a> | <a href="/forgotpassword">Forgot Password?</a>
+	        </div>
+	    </div>
+	</div>
+
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>HomyZ</h3>
+                    <p>Your trusted partner in finding the perfect property.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <ul class="footer-links">
+						<li><a href="/welcome">Home</a></li>
+						                       <li><a href="/buy">Buy</a></li>
+						                       <li><a href="/rent">Rent</a></li>
+						                       <li><a href="/sale">Sale</a></li>
+						                       <li><a href="/aboutus">About Us</a></li>
+						                       <li><a href="/contactus">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="/aboutus">About Us</a></li>
+                        <li><a href="/contactus">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 HomyZ Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+	
+	
+	
+	<script src="/js/welcome.js"></script>
+
+
+   
+</body>
+</html>

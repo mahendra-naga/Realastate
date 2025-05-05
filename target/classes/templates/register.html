@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="/css/register.css"> <!-- ✅ Link to external CSS -->
+</head>
+<body>
+    <div class="register-container">
+        <h2>Register</h2>
+        <p th:if="${message}" style="color: green; font-weight: bold;">[[${message}]]</p>
+        <p th:if="${error}"  style="color: red; font-weight: bold;" th:text="${error}"></p> <!-- Display error messages -->
+
+        <!-- ✅ Registration Form -->
+        <form action="/register" method="post">
+            <input type="text" name="firstName" placeholder="First Name" required><br>
+            <input type="text" name="lastName" placeholder="Last Name" required><br>
+            <input type="email" name="email" placeholder="Email Address" required><br> <!-- Added Email Field -->
+            <input type="text" name="phone" placeholder="Phone Number" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <button type="submit" class="register-btn">Register</button>
+        </form>
+
+        <a href="/welcome" class="login-link">Already registered? Login here</a>
+    </div>
+</body>
+</html>

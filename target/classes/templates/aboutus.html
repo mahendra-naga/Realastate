@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - HomyZ Real Estate</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">    
+
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: relative;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #480a0e;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: #4b5563;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #480a0e;
+        }
+
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .sign-in {
+            color: #4b5563;
+            transition: color 0.3s;
+        }
+
+        .sign-in:hover {
+            color: #480a0e;
+        }
+
+        .sign-up {
+            background-color: #480a0e;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .sign-up:hover {
+            background-color: #480a0e;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            font-size: 1.5rem;
+        }
+
+        /* Page Title Section */
+        .page-title {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./images/banner4.jpg');
+            background-size: contain;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .page-title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .page-title p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+            color: #1f2937;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+            color: #4b5563;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Our Values Section */
+        .values-section {
+            padding: 80px 0;
+            background-color: #f8fafc;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: #1f2937;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: #6b7280;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #dbeafe;
+            color: #480a0e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+        }
+
+        .value-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1f2937;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .team-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .team-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .team-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #1f2937;
+        }
+
+        .team-position {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-bottom: 15px;
+        }
+
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .team-social a {
+            width: 35px;
+            height: 35px;
+            background-color: #f3f4f6;
+            color: #4b5563;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .team-social a:hover {
+            background-color: #480a0e;
+            color: white;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(to right, #f3740c, #dcae0a);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content h2 {
+            font-size:.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-content p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .primary-btn {
+            background-color: white;
+            color: #2563eb;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .primary-btn:hover {
+            background-color: #f8fafc;
+        }
+
+        .secondary-btn {
+            background-color: transparent;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 500;
+            border: 1px solid white;
+            transition: background-color 0.3s;
+        }
+
+        .secondary-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1f2937;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3, .footer-col h4 {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-col p {
+            color: #9ca3af;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            padding-top: 20px;
+            border-top: 1px solid #374151;
+            font-size: 0.875rem;
+            color: #9ca3af;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            nav, .auth-buttons {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: 1;
+            }
+
+            .about-content {
+                order: 2;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .value-card, .team-card {
+                max-width: 350px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">HAPPYHOMZ🏡</div>
+                <nav>
+                    <ul>
+						<li><a href="/welcome">Home</a></li>
+						                       <li><a href="/buy">Buy</a></li>
+						                       <li><a href="/rent">Rent</a></li>
+						                       <li><a href="/sale">Sale</a></li>
+						                       <li><a href="/aboutus">About Us</a></li>
+						                       <li><a href="/contactus">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons">
+					<button id="logoutButton" class="btn btn-logout sign-up">Logout</button>
+                </div>
+                <button class="mobile-menu-btn">☰</button>
+            </div>
+        </div>
+    </header>
+    <!-- Page Title -->
+    <section class="page-title">
+        <div class="container">
+            <h1>About HappyHomyZ</h1>
+            <p>Learn about our company, our mission, and our dedicated team of real estate professionals</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2>Our Story</h2>
+                    <p>HappyHomyZ was founded in 2015 with a simple mission: to transform the way people buy, sell, and rent properties. We recognized that the traditional real estate process was often complicated, stressful, and lacked transparency.</p>
+                    <p>Our team of industry veterans and technology experts came together to create a platform that simplifies the real estate journey while providing unparalleled service and support.</p>
+                    <p>Today, HappyHomyZ has helped thousands of clients find their dream homes and make successful property investments. We combine cutting-edge technology with personalized service to ensure every client receives the attention and expertise they deserve.</p>
+                    <p>As we continue to grow, our commitment to innovation, integrity, and client satisfaction remains at the heart of everything we do.</p>
+                </div>
+                <div class="about-image">
+                    <img src="./images/office.jpg" alt="HomyZ Office">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Core Values</h2>
+                <p>These principles guide our actions and define our culture</p>
+            </div>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">✓</div>
+                    <h3 class="value-title">Integrity</h3>
+                    <p>We conduct our business with the highest standards of professional ethics and transparency.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">★</div>
+                    <h3 class="value-title">Excellence</h3>
+                    <p>We are committed to delivering exceptional service and results that exceed expectations.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">♥</div>
+                    <h3 class="value-title">Client Focus</h3>
+                    <p>We prioritize our clients' needs and work tirelessly to help them achieve their real estate goals.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">↗</div>
+                    <h3 class="value-title">Innovation</h3>
+                    <p>We continuously seek new ways to improve our services and stay ahead of industry trends.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Meet Our Team</h2>
+                <p>Our experienced professionals are dedicated to helping you achieve your real estate goals</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="./images/staff1.jpg" alt="Sarah Johnson" class="team-image">
+                    <div class="team-content">
+                        <h3 class="team-name">Sarah Johnson</h3>
+                        <p class="team-position">CEO & Founder</p>
+                        <p>With over 15 years of experience in real estate, Sarah founded HomyZ with a vision to transform the industry.</p>
+                        <div class="team-social">
+                            <a href="#"><i><i class="fa-brands fa-instagram"></i></i></a>
+                            <a href="#"><i><i class="fa-brands fa-facebook"></i></i></a>
+                            <a href="#"><i><i class="fa-brands fa-square-x-twitter"></i></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <img src="./images/staff3.jpg" alt="Michael Chen" class="team-image">
+                    <div class="team-content">
+                        <h3 class="team-name">Michael Chen</h3>
+                        <p class="team-position">Chief Technology Officer</p>
+                        <p>Michael leads our technology initiatives, ensuring our platform delivers a seamless user experience.</p>
+                        <div class="team-social">
+                            <a href="#"><i><i class="fa-brands fa-instagram"></i></i></a>
+                            <a href="#"><i><i class="fa-brands fa-facebook"></i></i></a>
+                            <a href="#"><i><i class="fa-brands fa-square-x-twitter"></i></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <img src="./images/staff2.jpg" alt="Emily Rodriguez" class="team-image">
+                    <div class="team-content">
+                        <h3 class="team-name">Emily Rodriguez</h3>
+                        <p class="team-position">Lead Real Estate Agent</p>
+                        <p>Emily's expertise in the market and negotiation skills have helped countless clients find their perfect home.</p>
+                        <div class="team-social">
+                            <a href="#"><i><i class="fa-brands fa-instagram"></i></i></a>
+                            <a href="#"><i><i class="fa-brands fa-facebook"></i></i></a>
+                            <a href="#"><i><i class="fa-brands fa-square-x-twitter"></i></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <img src="./images/staff4.jpg" alt="David Thompson" class="team-image">
+                    <div class="team-content">
+                        <h3 class="team-name">David Thompson</h3>
+                        <p class="team-position">Customer Success Manager</p>
+                        <p>David ensures every client receives exceptional service throughout their real estate journey.</p>
+                        <div class="team-social">
+                            <a href="#"><i><i class="fa-brands fa-instagram"></i></i></a>
+                            <a href="#"><i><i class="fa-brands fa-facebook"></i></i></a>
+                            <a href="#"><i><i class="fa-brands fa-square-x-twitter"></i></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Find Your Dream Home?</h2>
+                <p>Whether you're looking to buy, sell, or rent, our team of experts is here to help you every step of the way.</p>
+                <div class="cta-buttons">
+                    <a href="/viewallproperties" class="primary-btn">Browse Properties</a>
+                    <a href="/contactus" class="secondary-btn">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>HomyZ</h3>
+                    <p>Your trusted partner in finding the perfect property.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <ul class="footer-links">
+						<li><a href="/welcome">Home</a></li>
+						                       <li><a href="/buy">Buy</a></li>
+						                       <li><a href="/rent">Rent</a></li>
+						                       <li><a href="/sale">Sale</a></li>
+						                       <li><a href="/aboutus">About Us</a></li>
+						                       <li><a href="/contactus">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="/aboutus">About Us</a></li>
+                        <li><a href="/contactus">Contact</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="press.html">Press</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 HomyZ Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuButton = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('nav');
+            const authButtons = document.querySelector('.auth-buttons');
+            
+            menuButton.addEventListener('click', function() {
+                // This is a simplified toggle - in a real application, you'd want to create a proper mobile menu
+                nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+                authButtons.style.display = authButtons.style.display === 'flex' ? 'none' : 'flex';
+            });
+        });
+    </script>
+</body>
+</html>
