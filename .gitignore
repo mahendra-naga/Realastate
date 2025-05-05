@@ -31,3 +31,38 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
+# Maven / Gradle
+target/
+build/
+out/
+dependency-reduced-pom.xml
+*.iml
+
+# STS / Eclipse
+.classpath
+.project
+.settings/
+
+# IntelliJ / IDEA
+.idea/
+*.iws
+*.ipr
+*.iml
+
+# VS Code
+.vscode/
+
+# OS-generated
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
