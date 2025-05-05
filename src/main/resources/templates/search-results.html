@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - HAPPYHOMZ</title>
+    
+	<link rel="stylesheet" href="/css/welcome.css"/>
+
+</head>
+<body>
+     <!-- Header/Navigation -->
+     <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">HAPPYHOMZ🏡</div>
+                <nav>
+                    <ul>
+						<li><a href="/welcome">Home</a></li>
+																		                       <li><a href="/buy">Buy</a></li>
+																		                       <li><a href="/rent">Rent</a></li>
+																		                       <li><a href="/sale">Sale</a></li>
+																		                       <li><a href="/aboutus">About Us</a></li>
+																		                       <li><a href="/contactus">Contact Us</a></li>                    </ul>
+                </nav>
+                <div class="auth-buttons">
+					<button id="logoutButton" class="btn btn-logout sign-up">Logout</button>
+                </div>
+                <button class="mobile-menu-btn">☰</button>
+            </div>
+        </div>
+    </header>
+    
+    <section class="search-results">
+        <div class="container">
+            <div class="section-header">
+                <h2>Search Results</h2>
+                <p id="search-summary">Properties matching your search</p>
+            </div>
+            
+            <div class="properties-grid" id="results-container">
+
+                <!-- Results will be populated here via JavaScript -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>HomyZ</h3>
+                    <p>Your trusted partner in finding the perfect property.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <ul class="footer-links">
+						<li><a href="/welcome">Home</a></li>
+												                       <li><a href="/buy">Buy</a></li>
+												                       <li><a href="/rent">Rent</a></li>
+												                       <li><a href="/sale">Sale</a></li>
+												                       <li><a href="/aboutus">About Us</a></li>
+												                       <li><a href="/contactus">Contact Us</a></li>                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="/aboutus">About Us</a></li>
+                        <li><a href="/contactus">Contact</a></li>
+                        <li><a href="/search-results">Careers</a></li>
+                        <li><a href="/search-results">Press</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 HomyZ Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+		document.addEventListener('DOMContentLoaded', function () {
+		    // ✅ Get search results from sessionStorage
+		    const results = JSON.parse(sessionStorage.getItem('searchResults') || '[]');
+		    const searchTerm = sessionStorage.getItem('searchTerm') || '';
+
+		    // ✅ Update search summary
+		    const searchSummary = document.getElementById('search-summary');
+		    if (searchSummary) {
+		        searchSummary.innerHTML = `Found <strong>${results.length}</strong> properties matching "<strong>${searchTerm}</strong>"`;
+		    }
+
+		    // ✅ Get the container for results
+		    const container = document.getElementById('results-container');
+		    
+		    // ✅ Display results or show "No properties found"
+		    if (results.length > 0) {
+		        results.forEach(property => {
+		            const propertyCard = document.createElement('div');
+		            propertyCard.className = 'property-card fade-in';
+
+		            propertyCard.innerHTML = `
+		                <img src="${property.image}" alt="${property.title}" class="property-img">
+		                <div class="property-content">
+		                    <h3 class="property-title">${property.title}</h3>
+		                    <p class="property-location"><i class="fas fa-map-marker-alt"></i> ${property.location}</p>
+		                    <p class="property-price"><strong>$${property.price.toLocaleString()}</strong></p>
+		                    <div class="property-features">
+		                        <span><i class="fas fa-bed"></i> ${property.beds} Beds</span>
+		                        <span><i class="fas fa-bath"></i> ${property.baths} Baths</span>
+		                        <span><i class="fas fa-ruler-combined"></i> ${property.sqft} sqft</span>
+		                    </div>
+		                    <a href="/property-detail.html?id=${property.id}" class="property-btn">View Details</a>
+		                </div>
+		            `;
+
+		            container.appendChild(propertyCard);
+		        });
+		    } else {
+		        container.innerHTML = '<p class="no-results">No properties found matching your search criteria.</p>';
+		    }
+
+		    // ✅ Add hover effect to property cards
+		    document.querySelectorAll('.property-card').forEach(card => {
+		        card.addEventListener('mouseenter', function () {
+		            this.style.transform = 'translateY(-5px) scale(1.02)';
+		            this.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.15)';
+		        });
+
+		        card.addEventListener('mouseleave', function () {
+		            this.style.transform = 'translateY(0)';
+		            this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+		        });
+		    });
+		});
+
+    </script>
+</body>
+</html>

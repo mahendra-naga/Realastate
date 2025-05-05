@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - HomyZ Real Estate</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">    
+
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            position: relative;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #480a0e;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: #4b5563;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: #480a0e;
+        }
+
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .sign-in {
+            color: #4b5563;
+            transition: color 0.3s;
+        }
+
+        .sign-in:hover {
+            color:#480a0e;
+        }
+
+        .sign-up {
+            background-color: #480a0e;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .sign-up:hover {
+            background-color: #480a0e;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            font-size: 1.5rem;
+        }
+
+        /* Page Title Section */
+        .page-title {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./images/banner5.jpg');
+            background-size: cover;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+        }
+
+        .page-title h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .page-title p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #1f2937;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #4b5563;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+           
+            outline: none;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(to right, #480a0e, #ecbd13);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            display: inline-block;
+        }
+
+        .submit-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        .contact-info {
+            padding: 30px;
+        }
+
+        .contact-info h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #1f2937;
+        }
+
+        .info-item {
+            margin-bottom: 25px;
+        }
+
+        .info-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #1f2937;
+        }
+
+        .info-item p {
+            color: #6b7280;
+        }
+
+        .info-item a {
+            color: #2563eb;
+            transition: color 0.3s;
+        }
+
+        .info-item a:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: #f3f4f6;
+            color: #4b5563;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .social-link:hover {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 30px 0;
+            background-color: #f8fafc;
+        }
+
+        .map-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #1f2937;
+        }
+
+        .map-container {
+            height: 400px;
+            background-color: #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+            font-size: 1.2rem;
+            background-color: #f3f4f6;
+            border: 1px dashed #d1d5db;
+        }
+
+        /* Office Section */
+        .offices-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .offices-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #1f2937;
+        }
+
+        .offices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .office-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .office-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .office-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .office-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .office-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1f2937;
+        }
+
+        .office-address {
+            color: #6b7280;
+            margin-bottom: 15px;
+        }
+
+        .office-contact {
+            margin-bottom: 15px;
+        }
+
+        .office-contact a {
+            color: #2563eb;
+            display: block;
+            margin-bottom: 5px;
+            transition: color 0.3s;
+        }
+
+        .office-contact a:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+
+        .office-hours {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            background-color: #f8fafc;
+        }
+
+        .faq-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #1f2937;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question h3 {
+            font-size: 1.1rem;
+            color: #1f2937;
+        }
+
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: #6b7280;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1f2937;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3, .footer-col h4 {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-col p {
+            color: #9ca3af;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            padding-top: 20px;
+            border-top: 1px solid #374151;
+            font-size: 0.875rem;
+            color: #9ca3af;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            nav, .auth-buttons {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .offices-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .office-card {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">HAPPYHOMZ🏡</div>
+                <nav>
+                    <ul>
+						<li><a href="/welcome">Home</a></li>
+						                       <li><a href="/buy">Buy</a></li>
+						                       <li><a href="/rent">Rent</a></li>
+						                       <li><a href="/sale">Sale</a></li>
+						                       <li><a href="/aboutus">About Us</a></li>
+						                       <li><a href="/contactus">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons">
+					
+					<button id="logoutButton" class="btn btn-logout sign-up">Logout</button>
+                </div>
+                <button class="mobile-menu-btn">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Title -->
+    <section class="page-title">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>We're here to help with all your real estate needs. Reach out to our team today.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <h2>Send Us a Message</h2>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" placeholder="Enter your email address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" class="form-control" required>
+                                <option value="">Select a subject</option>
+                                <option value="buying">Buying a Property</option>
+                                <option value="selling">Selling a Property</option>
+                                <option value="renting">Renting a Property</option>
+                                <option value="valuation">Property Valuation</option>
+                                <option value="general">General Inquiry</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" placeholder="Enter your message here" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+				<script>
+				document.querySelector("#contact-form").addEventListener("submit", function(event) {
+				    event.preventDefault(); // ✅ Prevents page refresh
+
+				    let formData = {
+				        name: document.querySelector("#name").value,  // ✅ Select using ID
+				        email: document.querySelector("#email").value,
+				        phone: document.querySelector("#phone").value,
+				        subject: document.querySelector("#subject").value, // ✅ Select subject correctly
+				        message: document.querySelector("#message").value
+				    };
+
+				    fetch("/api/contact/submit?source=contact_us", { // ✅ Correct API endpoint
+				        method: "POST",
+				        headers: { "Content-Type": "application/json" },
+				        body: JSON.stringify(formData)
+				    })
+				    .then(response => response.text())
+				    .then(data => {
+				        alert("Your message has been sent successfully!"); // ✅ Show success message
+				        document.querySelector("#contact-form").reset(); // ✅ Reset form after submission
+				    })
+				    .catch(error => {
+				        console.error("Error:", error);
+				        alert("Something went wrong. Please try again.");
+				    });
+				});
+				</script>
+
+
+                <div class="contact-info">
+                    <h2>Get in Touch</h2>
+                    <div class="info-item">
+                        <h3>General Inquiries</h3>
+                        <p>For general questions about our services or properties</p>
+                        <p><a href="mailto:info@homyz.com">info@homyz.com</a></p>
+                        <p><a href="tel:+18005551234">1-800-555-1234</a></p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Sales Department</h3>
+                        <p>For questions about buying or selling properties</p>
+                        <p><a href="mailto:sales@homyz.com">sales@homyz.com</a></p>
+                        <p><a href="tel:+18005551235">1-800-555-1235</a></p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Rentals Department</h3>
+                        <p>For questions about renting properties</p>
+                        <p><a href="mailto:rentals@homyz.com">rentals@homyz.com</a></p>
+                        <p><a href="tel:+18005551236">1-800-555-1236</a></p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Follow Us</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="#" class="social-link"><i class="fa-brands fa-square-x-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fa-brands fa-square-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fa-brands fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2>Find Our Headquarters</h2>
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2770.5353268728463!2d78.49734367341108!3d17.441113301258575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9b3b3d2b5ed9%3A0x42c464bd00bad356!2sInfoZ%20IT%20Solutions%20-%20It%20consultancy%20%26%20Training!5e1!3m2!1sen!2sin!4v1741949222276!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Office Locations Section -->
+    <section class="offices-section">
+        <div class="container">
+            <h2>Our Office Locations</h2>
+            <div class="offices-grid">
+                <div class="office-card">
+                    <div class="office-image">
+                        <img src="./images/branch3.jpg" alt="Downtown Office">
+                    </div>
+                    <h3 class="office-name">Downtown Office</h3>
+                    <p class="office-address">123 Main Street, Suite 400<br>Downtown, Cityville, 12345</p>
+                    <div class="office-contact">
+                        <a href="tel:+15551237890">555-123-7890</a>
+                        <a href="mailto:downtown@homyz.com">downtown@homyz.com</a>
+                    </div>
+                    <div class="office-hours">
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                        <p>Saturday: 10:00 AM - 4:00 PM</p>
+                        <p>Sunday: Closed</p>
+                    </div>
+                </div>
+                
+                <div class="office-card">
+                    <div class="office-image">
+                        <img src="./images/branch1.jpg" alt="Suburban Office">
+                    </div>
+                    <h3 class="office-name">Suburban Office</h3>
+                    <p class="office-address">456 Oak Avenue<br>Leafy Heights, Cityville, 12346</p>
+                    <div class="office-contact">
+                        <a href="tel:+15552345678">555-234-5678</a>
+                        <a href="mailto:suburban@homyz.com">suburban@homyz.com</a>
+                    </div>
+                    <div class="office-hours">
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                        <p>Saturday: 10:00 AM - 4:00 PM</p>
+                        <p>Sunday: Closed</p>
+                    </div>
+                </div>
+                
+                <div class="office-card">
+                    <div class="office-image">
+                        <img src="./images/branch2.jpg" alt="Beachside Office">
+                    </div>
+                    <h3 class="office-name">Beachside Office</h3>
+                    <p class="office-address">789 Shore Drive<br>Oceanview, Cityville, 12347</p>
+                    <div class="office-contact">
+                        <a href="tel:+15553456789">555-345-6789</a>
+                        <a href="mailto:beachside@homyz.com">beachside@homyz.com</a>
+                    </div>
+                    <div class="office-hours">
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                        <p>Saturday: 10:00 AM - 4:00 PM</p>
+                        <p>Sunday: By appointment only</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item active">
+                    <div class="faq-question">
+                        <h3>How quickly can I expect a response to my inquiry?</h3>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We aim to respond to all inquiries within 24 business hours. For urgent matters, we recommend calling our customer service line directly for immediate assistance.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I schedule a video call instead of visiting your office?</h3>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! We offer virtual consultations via Zoom, Microsoft Teams, or Google Meet. Simply mention your preference for a video call when submitting your inquiry, and we'll arrange it at a time that works for you.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do I need to make an appointment to visit your office?</h3>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>While walk-ins are welcome during regular business hours, we recommend scheduling an appointment to ensure the appropriate specialist is available to assist you. This helps us prepare relevant information in advance and provide you with the best service.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How can I get updates on new property listings?</h3>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can sign up for our property alerts by creating an account on our website. This allows you to set specific criteria for properties you're interested in, and you'll receive automatic notifications when matching properties become available.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do you offer services in other languages?</h3>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, our team includes agents who speak multiple languages including Spanish, French, Mandarin, and Arabic. Please let us know your language preference when contacting us, and we'll connect you with an appropriate agent.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>HomyZ</h3>
+                    <p>Your trusted partner in finding the perfect property.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <ul class="footer-links">
+						<li><a href="/welcome">Home</a></li>
+						                       <li><a href="/buy">Buy</a></li>
+						                       <li><a href="/rent">Rent</a></li>
+						                       <li><a href="/sale">Sale</a></li>
+						                       <li><a href="/aboutus">About Us</a></li>
+						                       <li><a href="/contactus">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="/aboutus">About Us</a></li>
+                        <li><a href="/contactus">Contact</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="press.html">Press</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 HomyZ Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+	<script src="/js/contact.js"></script>
+</body>
+</html>
